@@ -1,0 +1,492 @@
+/* s/* src/App.css — Glass + Accent Theme (mobile-first) */
+:root{
+  --bg1: #0f172a;
+  --bg2: #071029;
+  --card: rgba(255,255,255,0.06);
+  --glass-border: rgba(255,255,255,0.08);
+  --accent: #06b6d4; /* teal accent */
+  --accent-2: #7c3aed; /* secondary purple tint for gradients */
+  --muted: #9aa3b2;
+  --danger: #ff6b6b;
+  --glass-blur: 10px;
+  --radius: 14px;
+  --glass-padding: 14px;
+  --transition: 180ms ease;
+  --max-width: 1100px;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#e6eef6;background:
+  radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.08), transparent 8%),
+  radial-gradient(1000px 500px at 90% 90%, rgba(6,182,212,0.06), transparent 10%),
+  linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+}
+
+/* app container */
+.app-root{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:18px}
+.container{width:100%;max-width:var(--max-width);padding:12px}
+
+
+/* NAV */
+.nav{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:18px;
+  padding:10px;
+  border-radius:12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+}
+.brand{color:var(--accent);font-weight:700;text-decoration:none;font-size:20px}
+.nav-left{display:flex;align-items:center;gap:12px}
+.hambtn{background:transparent;border:none;color:var(--muted);font-size:20px}
+.nav-links{display:flex;gap:8px}
+.nav-links a{padding:8px 12px;border-radius:10px;text-decoration:none;color:#0b1220;background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 6px 18px rgba(12,15,20,0.25);font-weight:600;transition:transform var(--transition)}
+.nav-links a:hover{transform:translateY(-4px)}
+
+/* page card */
+.card{
+  width:100%;
+  margin-bottom:14px;
+  padding:var(--glass-padding);
+  border-radius:var(--radius);
+  background: var(--card);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  box-shadow: 0 10px 30px rgba(2,6,23,0.45);
+}
+
+/* product table -> compact on desktop / card on mobile */
+.table-wrap{overflow:auto;border-radius:10px}
+.product-table{width:100%;border-collapse:collapse;min-width:680px}
+.product-table th, .product-table td{
+  padding:12px 14px;text-align:left;color:#dbe9f8;border-bottom:1px solid rgba(255,255,255,0.03)
+}
+.product-table th{font-size:13px;color:var(--muted);font-weight:600}
+.product-table tbody tr:hover{background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))}
+.price-chip{display:inline-block;background:rgba(0,0,0,0.22);padding:6px 10px;border-radius:999px;font-weight:700;color:#fff}
+.badge-low{background:linear-gradient(90deg,#fff6f4,#fff0ef);color:var(--danger);padding:6px 8px;border-radius:999px;font-weight:700}
+
+/* action small links */
+.small{background:transparent;color:var(--accent);border:0;padding:6px 8px;border-radius:8px;cursor:pointer}
+.small.danger{color:var(--danger)}
+
+/* responsive card layout for small screens */
+@media (max-width:880px){
+  .product-table{display:none}
+  .card-list{display:flex;flex-direction:column;gap:12px}
+  .product-card{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+    border:1px solid rgba(255,255,255,0.04)
+  }
+  .product-card .left{max-width:68%}
+  .product-card h4{margin:0;font-size:15px;color:#fff}
+  .meta{font-size:13px;color:var(--muted);margin-top:6px}
+  .card-cta{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+  .fab{
+    position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    color:#fff;padding:14px;border-radius:999px;border:none;box-shadow:0 10px 30px rgba(6,182,212,0.18);cursor:pointer;font-weight:700
+  }
+}
+
+/* form styling */
+.form label{display:flex;flex-direction:column;font-weight:600;color:#e6eef6;margin-bottom:6px}
+.form input{padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff}
+.form-actions{display:flex;gap:10px;margin-top:8px}
+.btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#061021;padding:9px 14px;border-radius:10px;border:none;font-weight:700;cursor:pointer;transition:transform var(--transition)}
+.btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+.btn:active{transform:translateY(1px)}
+
+/* low stock highlight in table */
+.low{background:linear-gradient(90deg, rgba(255,230,230,0.03), rgba(255,245,245,0.01));color:var(--danger)}
+
+/* skeleton */
+.skeleton{height:12px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.06), rgba(255,255,255,0.02));border-radius:6px;animation:shine 1.4s linear infinite}
+@keyframes shine{0%{background-position:-200px 0}100%{background-position:200px 0}}
+
+/* small screen adjustments */
+@media (min-width: 881px){
+  .card-list{display:none}
+}
+
+/* ============================
+   PRODUCT BOX (GRID CARD VIEW)
+   ============================ */
+
+/* Box grid layout */
+.product-grid{
+  display:grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap:14px;
+}
+
+/* Desktop: more columns */
+@media (min-width:720px){
+  .product-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width:1100px){
+  .product-grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Individual product box */
+.product-box{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: 14px;
+  border-radius: 12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.product-box:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(2,6,23,0.5);
+}
+
+/* top row */
+.box-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.sku{
+  font-weight:700;
+  color:var(--muted);
+  font-size:13px;
+}
+.stock-pill{
+  font-weight:700;
+  padding:6px 8px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.03);
+  color:#cfeefb;
+  font-size:13px;
+}
+.stock-pill.low-pill{
+  background: linear-gradient(90deg,#fff6f4,#fff0ef);
+  color: var(--danger);
+  font-weight:800;
+}
+
+/* title + meta */
+.box-title{
+  margin:0;
+  font-size:16px;
+  color:#e6eef6;
+}
+.box-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  color:var(--muted);
+  font-size:13px;
+}
+.price{
+  background:rgba(0,0,0,0.18);
+  padding:6px 10px;
+  border-radius:999px;
+  color:#fff;
+  font-weight:700;
+}
+
+/* Remove underline for small action links and ensure even spacing */
+.box-actions a,
+.box-actions .small,
+.box-actions button {
+  text-decoration: none;   /* remove underline */
+  background: transparent;
+  border: 0;
+  padding: 6px 8px;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* style Edit and Delete distinctly */
+.box-actions a.small { color: var(--accent); }
+.box-actions button.small.danger { color: var(--danger); background: transparent; }
+
+/* Align action buttons consistently on each card */
+.box-actions{
+  display:flex;
+  gap:12px;                /* equal spacing between actions */
+  justify-content:flex-end;
+  align-items:center;
+  margin-top:8px;
+}
+
+.box-actions button.small.danger{
+  padding:6px 10px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.03);
+  background: rgba(255,255,255,0.01);
+  transition: transform 140ms ease, background 140ms ease;
+}
+.box-actions button.small.danger:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.03);
+}
+
+.box-actions a.small{
+  padding:6px 10px;
+  border-radius:8px;
+  transition: transform 140ms ease, background 140ms ease;
+}
+.box-actions a.small:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.02);
+}
+
+
+/* FAB: mobile only */
+.fab{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#fff;
+  padding:14px;
+  border-radius:999px;
+  border:none;
+  box-shadow:0 10px 30px rgba(6,182,212,0.18);
+  cursor:pointer;
+  font-weight:700;
+  z-index:1200; /* ensure it sits above most UI on mobile */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Hide FAB on medium+ screens to avoid overlap with cards */
+@media (min-width:881px){
+  .fab{ display:none; }
+}
+
+
+
+/* Dashboard beautification */
+.dashboard .subtext {
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.dashboard-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.stat-box {
+  flex: 1;
+  min-width: 180px;
+  padding: 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+}
+
+.stat-box h3 {
+  margin: 0 0 6px 0;
+  color: #dce7f5;
+  font-size: 15px;
+}
+
+.stat-box .number {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* prettier buttons inside dashboard */
+.dashboard-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.dashboard-buttons a {
+  text-decoration: none !important;
+}
+
+a, a:visited, a:hover {
+  text-decoration: none;
+}
+
+.action-btn {
+  background: transparent;
+  border: 0;
+  color: var(--accent);
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.action-btn.danger {
+  color: var(--danger);
+}
+
+.action-btn:hover {
+  opacity: 0.8;
+}
+
+/* Add Supplier form tweaks */
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+  color: #e6eef6;
+  margin-bottom: 12px;
+}
+
+.form input {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  color: #eaf6ff;
+  outline: none;
+  transition: box-shadow 120ms ease, border-color 120ms ease;
+}
+
+.form input::placeholder { color: rgba(230, 238, 246, 0.45); }
+
+.form input:focus {
+  border-color: rgba(6,182,212,0.9);
+  box-shadow: 0 6px 20px rgba(6,182,212,0.06);
+}
+
+.form .error {
+  color: #ffb4b4;
+  background: rgba(255, 80, 80, 0.04);
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,80,80,0.06);
+  font-weight: 600;
+}
+
+/* responsive: single column on small screens */
+@media (max-width: 720px) {
+  .form { gap: 10px; }
+  .form label { margin-bottom: 10px; }
+  .form input { font-size: 15px; }
+  .form div[style*="grid-template-columns"] { grid-template-columns: 1fr; }
+}
+
+/* Card container */
+.order-list.card {
+  padding: 20px;
+}
+
+/* Header */
+.order-list .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.order-list .header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Table */
+.order-list .order-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: sans-serif;
+}
+
+.order-list .order-table th,
+.order-list .order-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-list .order-table th {
+  background-color: #f9f9f9;
+  text-align: left;
+  color: #333;
+}
+
+.order-list .order-table td.center {
+  text-align: center;
+}
+
+.order-list .order-table td.right {
+  text-align: right;
+}
+
+/* Status badge */
+.status-badge {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 12px;
+  color: #333;
+}
+
+.status-badge.pending { background-color: #ffebee; }
+.status-badge.completed { background-color: #e8f5e9; }
+.status-badge.processing { background-color: #e3f2fd; }
+
+/* Actions */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* Loading & error */
+.loading-text, .no-orders, .error {
+  margin-top: 12px;
+}
+
+
+.brand-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(54, 159, 239, 0.919);
+  margin-left: 8px;
+}
+
