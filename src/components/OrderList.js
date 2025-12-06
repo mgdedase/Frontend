@@ -85,7 +85,7 @@ export default function OrderList() {
     setUpdatingId(orderId);
     try {
       const res = await fetch(`${API_BASE}/orders/${orderId}`, {
-        method: "PATCH",
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
       });
