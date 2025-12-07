@@ -98,7 +98,7 @@ export default function AddSupplier() {
 
         <div className="form-actions" style={{ marginTop: 12 }}>
           <button className="btn" type="submit" disabled={saving}>
-            {saving ? "Saving..." : "Save Supplier"}
+            {saving ? "Saving..." : "Save"}
           </button>
 
           <button
