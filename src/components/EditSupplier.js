@@ -157,7 +157,7 @@ export default function EditSupplier() {
             type="submit"
             disabled={saving || isUnchanged} // ⭐ disable button if unchanged
           >
-            {saving ? "Updating..." : "Save Changes"}
+            {saving ? "Updating..." : "Save"}
           </button>
         </div>
       </form>
